@@ -1,0 +1,31 @@
+{% extends 'layouts/layout.html' %}
+
+{% block title %} {{title}} {% endblock %}
+
+{% block content %} 
+    <h1>{{title}}</h1>
+
+    <ul>
+        {% for producto in productos %}
+            <article class="article-item">
+
+                {% if producto.image != 'null' and producto.image.url|length >= 1 %}
+                    <div class="image">
+                        <img src="{{producto.image.url}}"/>
+                    </div>
+                {% endif %}
+                
+                <div class="data">
+                    <h2>{{producto.title}}</h2>
+                    <p>{{producto.type}}</p>
+                    <p>{{producto.content}}</p>
+                    <p>Precio: ${{producto.price}}</p>
+                    <p>Cantidad disponible: {{producto.stok}}</p>
+                    <a href="/pedido/{{producto.id}}"  class="btn btn-compra">Comprar</a>
+                </div>
+
+                <div class="clearfix"></div>
+            </article>
+        {% endfor %}
+
+{% endblock %}

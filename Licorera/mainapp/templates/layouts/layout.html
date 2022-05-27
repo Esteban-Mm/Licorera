@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        {% block title %}
+        <!--titulo de cada pagina-->
+        {% endblock %}
+        Licorera
+    </title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+</head>
+
+<body>
+    <!--Cabecera de la pagina-->
+    <header>
+        <div id="logotipo">
+            <!--Logo Django-->
+            <img src="{% static 'images/logo2.png' %}" />
+            <h1>Licorera Pascualina 24/7</h1>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="/inicio">Inicio</a>
+            </li>
+            <li>
+                <a href="/cerveza">Cervezas</a>
+            </li>
+            <li>
+                <a href="/ron">Ron</a>
+            </li>
+            <li>
+                <a href="/tekila">Tekila</a>
+            </li>
+            <li>
+                <a href="/whiskey">Whiskey</a>
+            </li>
+            <li>
+                <a href="/informacion">Informacion</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="barra">
+        <span class="esquina-izquierda"></span>
+        <span class="relleno-barra"></span>
+        <span class="esquina-derecha"></span>
+    </div>
+
+    <div id="content">
+        <div class="box">
+            {% block content %}
+                <!--Codigo que viene de templates-->
+            {% endblock %}
+        </div>       
+    </div>
+
+    <footer>
+        Licorera Pascualina &copy; Esteban y Alexander Web - {% now "d/m/y h:m:s" %}
+    </footer>
+
+</body>
+
+</html>

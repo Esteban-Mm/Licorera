@@ -1,0 +1,33 @@
+{% extends 'layouts/layout.html' %}
+
+{% block title %} {{title}} {% endblock %}
+
+{% block content %}
+    <h1>{{title}}</h1>
+</br>
+    <h2>{{producto.title}}</h2>
+    <h2>{{producto.content}}</h2>
+    <h2>Precio: ${{producto.price}}</h2>
+</br>
+    <h2>Cantidad disponible: {{producto.stok}}</h2>
+    <br/>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message">
+                <h3>{{message}}</h3>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form action="/pedido/{{producto.id}}" method="POST">
+
+        {% csrf_token %}
+    
+        {{ form.as_p }}
+    
+        <input type="submit" value="Enviar y Comprar"/>
+        
+    </form>
+
+{% endblock %}
